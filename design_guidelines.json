@@ -1,0 +1,163 @@
+{
+  "project": "Sara Official",
+  "app_type": "marketing_site",
+  "vibe": "Awwwards Site-of-the-Day, luxury fashion editorial, high-end logistics, cinematic motion",
+  "theme": {
+    "mode": "dark",
+    "colors": {
+      "background": "#111111",
+      "surface": "#1A1A1A",
+      "surface_light": "#F5F5F0",
+      "primary": "#C8A96A",
+      "text_primary": "#FFFFFF",
+      "text_secondary": "#888888",
+      "text_inverse": "#111111",
+      "border": "rgba(200, 169, 106, 0.15)"
+    },
+    "typography": {
+      "font_heading": "Playfair Display, serif",
+      "font_body": "Poppins, sans-serif",
+      "scales": {
+        "h1": "text-5xl sm:text-7xl lg:text-[8vw] leading-[0.9] tracking-tighter uppercase",
+        "h2": "text-4xl lg:text-6xl tracking-tight leading-none",
+        "h3": "text-2xl lg:text-3xl font-light",
+        "body": "text-base lg:text-lg leading-relaxed text-gray-300 font-light",
+        "eyebrow": "text-xs tracking-[0.25em] uppercase text-[#C8A96A] font-semibold"
+      }
+    }
+  },
+  "layout_spacing": {
+    "section_padding": "py-24 lg:py-32",
+    "container_width": "max-w-[1400px] mx-auto px-6 lg:px-12",
+    "grid_system": "Bento 'Tetris' asymmetric grids with gap-8 to gap-12"
+  },
+  "visual_enhancers": {
+    "borders": "1px solid rgba(200, 169, 106, 0.15)",
+    "shadows": "Minimal. Deep ambient shadows for floating nav: shadow-[0_8px_32px_rgba(0,0,0,0.4)]",
+    "images": "Clipped frames (pill shapes, arches, sharp rectangles). Add subtle CSS grain texture overlay.",
+    "hover_states": "Images scale up 1.05x with grayscale-to-color transition. Texts slide up with magnetic pull."
+  },
+  "components": {
+    "buttons": "Pill-shaped or sharp rectangular, border 1px solid #C8A96A, transparent bg. On hover: bg-[#C8A96A] text-[#111111]. Add group-hover arrow slide animation.",
+    "cards": "Cardless or 1px border. Dark surface bg. High padding (p-8 to p-12).",
+    "marquee": "Use react-fast-marquee. Massive outline text (text-transparent [-webkit-text-stroke:1px_#C8A96A] opacity-50) moving slowly behind sections.",
+    "timeline": "Vertical left-bordered line in gold. Scroll-triggered height filling. Nodes are gold dots.",
+    "accordion": "Shadcn accordion. Minimalist, border-b only. Title in Playfair Display. Plus/minus icon rotating on active.",
+    "navigation": "Sticky, glassmorphism (backdrop-blur-xl bg-black/60), gold active state dot.",
+    "lightbox": "Implement a framer-motion AnimatePresence lightbox for the product gallery images.",
+    "scroll_progress": "Framer motion scaleX fixed progress bar at top of screen in Gold."
+  },
+  "motion": {
+    "framer_motion_primitives": {
+      "masked_reveal": { "initial": {"y": "100%", "opacity": 0}, "animate": {"y": 0, "opacity": 1}, "transition": {"duration": 0.8, "ease": [0.76, 0, 0.24, 1]} },
+      "fade_up": { "initial": {"y": 40, "opacity": 0}, "whileInView": {"y": 0, "opacity": 1}, "viewport": {"once": true, "margin": "-100px"} },
+      "stagger_children": { "transition": {"staggerChildren": 0.1} },
+      "parallax_image": { "style": {"y": "useTransform(scrollYProgress, [0, 1], ['0%', '20%'])"} }
+    },
+    "scroll_library": "Use `@studio-freight/react-lenis` for smooth momentum scrolling. Required for luxury feel."
+  },
+  "section_blueprint": [
+    {
+      "name": "Preloader",
+      "description": "Minimal dark screen. Central brand mark 'SARA OFFICIAL' fades in, splits, or masks out to reveal the hero.",
+      "framer_motion": "Exit animation fading opacity to 0 with y-axis slide."
+    },
+    {
+      "name": "Header",
+      "description": "Sticky Glassmorphism nav. Logo center. Links left/right. Contact CTA.",
+      "components_needed": ["Navigation Menu"]
+    },
+    {
+      "name": "Hero",
+      "description": "Kinetic text reveal. 'YOUR EVERYDAY / LOOK, MADE / BETTER.' Masked line-by-line reveal. Right side: large hero image in an arched or pill-shaped clipped frame with subtle parallax. Background has dark grain.",
+      "components_needed": ["Framer Motion Text Reveal", "Parallax Image"]
+    },
+    {
+      "name": "About / Manifesto",
+      "description": "Numbered chapters (01 / HERITAGE). Giant gold numbers overlapping text. Off-white/Beige section (#F5F5F0) to break the dark mode rhythm. High contrast black text.",
+      "components_needed": ["Scroll Reveals"]
+    },
+    {
+      "name": "Marquee",
+      "description": "Slow editorial marquee band separating sections. 'IMPORT · EXPORT · WHOLESALE · GLOBAL SHIPPING ·'",
+      "components_needed": ["react-fast-marquee"]
+    },
+    {
+      "name": "Services",
+      "description": "Bento grid of services (Import, Export, Wholesale, Shipping, Quality Inspection, Partnerships). Dark mode. Cards with subtle gold borders. Hovering reveals specific imagery.",
+      "components_needed": ["Hover Cards"]
+    },
+    {
+      "name": "Featured Products",
+      "description": "Categories (Women, Men, Kids, Denim, Winter, Summer, Casual, Formal). Asymmetric staggered grid. Images in spotlight clipped frames. Lightbox integration.",
+      "components_needed": ["Image Gallery", "Lightbox"]
+    },
+    {
+      "name": "Countries We Trade",
+      "description": "Bangladesh, Canada, Turkey, India. Animated SVG map lines connecting nodes. Accompanying aesthetic images of city skylines.",
+      "components_needed": ["Framer Motion SVG Path Length Animation"]
+    },
+    {
+      "name": "Business Process",
+      "description": "8-step vertical timeline. 'The Process'. Left gold line grows on scroll. Each step fades in. Minimalist textual steps.",
+      "components_needed": ["Scroll Progress Timeline"]
+    },
+    {
+      "name": "Testimonials & Stats",
+      "description": "Stats counters tracking up on scroll. Below, large Serif quotes in a clean carousel/grid format.",
+      "components_needed": ["Carousel or Grid", "CountUp"]
+    },
+    {
+      "name": "FAQ",
+      "description": "Accordion below for FAQs.",
+      "components_needed": ["Shadcn Accordion"]
+    },
+    {
+      "name": "Contact & Map",
+      "description": "Contact form with country field. Google Map iframe with grayscale CSS filter. Floating WhatsApp CTA in bottom right.",
+      "components_needed": ["Shadcn Form", "Google Map iframe", "Floating Action Button"]
+    },
+    {
+      "name": "Footer",
+      "description": "Massive 'SARA' typography at bottom. Quick links, business hours, social icons, back-to-top button.",
+      "components_needed": ["Footer Layout"]
+    }
+  ],
+  "image_urls": {
+    "hero_main": {"url": "https://images.unsplash.com/photo-1613915617430-8ab0fd7c6baf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODh8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmYXNoaW9uJTIwZWRpdG9yaWFsJTIwbW9kZWwlMjBzdHVkaW98ZW58MHx8fHwxNzg0NTI5NDYwfDA&ixlib=rb-4.1.0&q=85", "description": "High fashion woman with scarf for hero section"},
+    "hero_secondary": {"url": "https://images.pexels.com/photos/37233404/pexels-photo-37233404.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "description": "Dramatic fashion portrait for hero parallax"},
+    "category_women": {"url": "https://images.unsplash.com/photo-1546536133-d1b07a9c768e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODh8MHwxfHNlYXJjaHwzfHxsdXh1cnklMjBmYXNoaW9uJTIwZWRpdG9yaWFsJTIwbW9kZWwlMjBzdHVkaW98ZW58MHx8fHwxNzg0NTI5NDYwfDA&ixlib=rb-4.1.0&q=85", "description": "Women's fashion"},
+    "category_men": {"url": "https://images.pexels.com/photos/7886946/pexels-photo-7886946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "description": "Men's fashion"},
+    "category_denim": {"url": "https://images.pexels.com/photos/11614519/pexels-photo-11614519.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "description": "Denim collection"},
+    "category_winter": {"url": "https://images.pexels.com/photos/33942099/pexels-photo-33942099.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "description": "Winter collection"},
+    "process_manufacturing": {"url": "https://images.pexels.com/photos/6276004/pexels-photo-6276004.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "description": "Macro fabric texture for process section"},
+    "process_inspection": {"url": "https://images.unsplash.com/photo-1673201229733-69d19c5c4a87?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwzfHxjbG90aGluZyUyMG1hbnVmYWN0dXJpbmclMjBmYWJyaWMlMjBkZXRhaWx8ZW58MHx8fHwxNzg0NTI5NDYxfDA&ixlib=rb-4.1.0&q=85", "description": "Sewing/quality inspection"},
+    "location_canada": {"url": "https://images.pexels.com/photos/6783790/pexels-photo-6783790.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "description": "Toronto skyline representing Canada trade"},
+    "location_turkey": {"url": "https://images.unsplash.com/photo-1696711551721-458511adcd86?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwxfHxpc3RhbmJ1bCUyMHNreWxpbmUlMjBhZXN0aGV0aWN8ZW58MHx8fHwxNzg0NTI5NDYwfDA&ixlib=rb-4.1.0&q=85", "description": "Istanbul bridge night representing Turkey trade"},
+    "location_bangladesh": {"url": "https://images.unsplash.com/photo-1507992781348-310259076fe0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDV8MHwxfHNlYXJjaHwxfHx0b3JvbnRvJTIwc2t5bGluZSUyMGFlc3RoZXRpY3xlbnwwfHx8fDE3ODQ1Mjk0NjB8MA&ixlib=rb-4.1.0&q=85", "description": "Waterway representing Bangladesh shipping port"},
+    "location_india": {"url": "https://images.unsplash.com/photo-1727897023999-5d268e20a880?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwzfHxpc3RhbmJ1bCUyMHNreWxpbmUlMjBhZXN0aGV0aWN8ZW58MHx8fHwxNzg0NTI5NDYwfDA&ixlib=rb-4.1.0&q=85", "description": "Boat in water representing India shipping"}
+  },
+  "instructions_to_main_agent": [
+    "Install and use `framer-motion` for complex scrolling reveals and `lucide-react` for minimalist icons.",
+    "Install and use `@studio-freight/react-lenis` or `lenis` for smooth scrolling. This is MANDATORY for the luxury feel.",
+    "Install and use `react-fast-marquee` for the editorial marquee band.",
+    "NEVER use generic purple or bright gradient backgrounds. Rely on #111111 (Black) and #F5F5F0 (Ivory) with #C8A96A (Gold) accents.",
+    "Use Playfair Display for headings and Poppins for body text.",
+    "Ensure the hero features a kinetic line-by-line masked text reveal using Framer Motion (use overflow-hidden wrappers on text lines).",
+    "Style the Google Map embed with a dark mode or grayscale CSS filter: `filter: grayscale(100%) invert(90%) hue-rotate(180deg)` to match the luxury aesthetic.",
+    "Do NOT use pure transparent backgrounds for the sticky navbar. Use `backdrop-blur-xl bg-black/60`.",
+    "Do NOT use Vercel/Stripe 'card' styles. Use cardless rectangular or pill-shaped designs with generous padding.",
+    "Include `data-testid` on all interactive buttons, links, and forms.",
+    "Add a fixed WhatsApp floating icon at the bottom right corner with a gold background or gold border."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Do not converge toward generic outputs. Avoid centered simplistic gradients.",
+    "Create depth through layered design elements with z-index hierarchy and glassmorphism.",
+    "Do not apply `transition: all`. Target specific properties.",
+    "Do not center-align the app container (`.App { text-align: center; }`).",
+    "Use 2-3x more spacing than usual (`py-24`, `gap-12`). Cramped designs look cheap.",
+    "NEVER use emojis as icons.",
+    "Add hover states to ALL interactive elements. Use scale, border color transitions, and slight magnetic pulls.",
+    "Use the exact image URLs provided in the JSON payload to avoid placeholder slop."
+  ]
+}

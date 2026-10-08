@@ -1,0 +1,6 @@
+{
+  "name": "Sara Official — Global Fashion Trading",
+  "description": "Sara Official — International clothing import & export between Bangladesh, Canada, Turkey and India. Premium sourcing, quality inspection and worldwide logistics.",
+  "requestFramePermissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
