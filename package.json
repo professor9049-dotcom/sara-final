@@ -45,7 +45,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "cors": "^2.8.5",
-    "date-fns": "^4.1.0",
+    "date-fns": "^3.6.0",
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.7",
     "embla-carousel-react": "^8.5.2",
@@ -85,5 +85,10 @@
     "tsx": "^4.19.2",
     "typescript": "^5.7.3",
     "vite": "^6.1.0"
+  },
+  "overrides": {
+    "react-day-picker": {
+      "date-fns": "$date-fns"
+    }
   }
 }
